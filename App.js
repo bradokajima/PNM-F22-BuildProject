@@ -1,20 +1,24 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
+import { db } from './components/firebase';
+import GoogleAuth from './components/GoogleAuth';
+import LiveCounter from './components/LiveCounter';
+import MainContainer from './navigation/MainContainer';
+import { useFonts } from 'expo-font';
 
-export default function App() {
+
+function App() {
+  const [loaded] = useFonts({
+    SFPro: require('srac-app/assets/fonts/SFProDisplay-Semibold.ttf'),
+    DMSans: require('srac-app/assets/fonts/DMSans-Medium.ttf')
+  })
+
+  if (!loaded) {
+    return null;
+  }
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <MainContainer />
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
