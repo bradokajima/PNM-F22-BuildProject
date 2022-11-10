@@ -20,7 +20,7 @@
 
 // Insert your network credentials
 #define WIFI_SSID "HOME-9A94-2.4"
-#define WIFI_PASSWORD "creek1912basket"
+#define WIFI_PASSWORD "password"
 
 // project api key
 #define API_KEY "AIzaSyAVmQSViMyumP4xeKjzcZ3DcKrPnX_z0Vw"
@@ -85,17 +85,17 @@ void loop(){
   int sensor1New = getDistanceUltra(sensor1);
   int sensor2New = getDistanceUltra(sensor2);
 
-  if(sequence.charAt(0) != '1'){
+  if(order.charAt(0) != '1'){
     order += "1";
-  }else if(sequence.charAt(0) != '2'){
+  }else if(order.charAt(0) != '2'){
     order += "2";
   }
   
-  if(order.equals("21")){
+  if(order.equals("21") && liveCount > 0){
     liveCount--;  
     order="";
     delay(500);
-  }else if(order.equals("12") && liveCount > 0){
+  }else if(order.equals("12")){
     liveCount++;  
     order="";
     delay(500);
