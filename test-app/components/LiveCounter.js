@@ -35,7 +35,7 @@ export default function LiveCounter() {
                 activeStrokeWidth={35}
                 duration={1000}
                 activeStrokeColor={'#1C88F4'}
-                activeStrokeSecondaryColor={'##0055A2'}
+                activeStrokeSecondaryColor={'#0055A2'}
 
             />
             <View style={style.subcontainer}>
