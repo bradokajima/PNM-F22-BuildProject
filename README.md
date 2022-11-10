@@ -1,3 +1,3 @@
 # PNM-F22-BuildProject
-# Front End of Build Project
-# React Native and Expo 
+Front End of Build Project
+React Native and Expo 
