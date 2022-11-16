@@ -41,6 +41,8 @@ int liveCount = 0;
 
 int sensor1Loc[] = {5,4};
 int sensor2Loc[] = {14,12};
+int sensor1Init = 0;
+int sensor2Init = 0;
 
 String order = "";
 
@@ -74,6 +76,9 @@ void setup(){
 
   /* Assign the callback function for the long running token generation task */
   config.token_status_callback = tokenStatusCallback; //see addons/TokenHelper.h
+
+  sensor1Init = getDistanceUltra(sensor1Loc);
+  sensor2Init = getDistanceUltra(sensor1Loc);
   
   Firebase.begin(&config, &auth);
   Firebase.reconnectWiFi(true);
@@ -82,12 +87,12 @@ void setup(){
 
 void loop(){
 
-  int sensor1New = getDistanceUltra(sensor1);
-  int sensor2New = getDistanceUltra(sensor2);
+  int sensor1New = getDistanceUltra(sensor1Loc);
+  int sensor2New = getDistanceUltra(sensor2Loc);
 
-  if(order.charAt(0) != '1'){
+  if(sensor1New < sensor1Init - 30 && order.charAt(0) != '1'){
     order += "1";
-  }else if(order.charAt(0) != '2'){
+  }else if(sensor1New < sensor1Init - 30 && order.charAt(0) != '2'){
     order += "2";
   }
   
